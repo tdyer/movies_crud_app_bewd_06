@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   # Invoke the MoviesController#index action/method
   get '/movies', to: 'movies#index'
 
+  # Handle a HTTP GET /movies/1
+  get '/movies/:id', to: 'movies#show'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
