@@ -1,6 +1,19 @@
+<header>
+  <h1>All Movies</h1>
+</header>
 <ul>
   <% @movies.each do |movie| %>
-  <li><%= movie.name %></li>
+  <li>
+    <%= movie.name %>
+    | <%= link_to("Show", movie_path(movie.id)) %>
+    | <%= link_to("Edit", edit_movie_path(movie.id)) %>
+    <!-- Generate a HTTP DELETE Request to /movies/:id -->
+    <!-- It's going to bring up a confirm dialog as well -->
+    | <%= link_to("Destroy", movie_path(movie.id), method: :delete, data: {confirm: "Are you sure?"}) %>
+  </li>
   <% end %>
+
+  <hr/><br/>
+  <%= link_to "Create a New Movie", new_movie_path %>
 </ul>
 

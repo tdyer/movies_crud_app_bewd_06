@@ -1,0 +1,36 @@
+<!-- Use a form_for helper to generate a HTML form tag -->
+<%= form_for(@movie) do |f| %>
+<fieldset>
+  <ul>
+    <li>
+      <%= f.label :name %>
+      <!-- Create text field for the movie name -->
+      <%= f.text_field :name, autofocus: true %>
+    </li>
+    <li>
+      <%= f.label :rating %>
+      <!-- Create a select/dropdown the movie rating -->
+      <%= f.select :rating, Movie::RATINGS.to_a.map { |r| [r, r] }, include_blank: true %>
+    </li>
+    <li>
+      <%= f.label :description %>
+      <!-- Create a text area for a movie description -->
+      <%= f.text_area :desc %>
+    </li>
+    <li>
+      <%= f.label :length %>
+      <!-- Create a number field for the length of the movie -->
+      <%= f.number_field :length, min: 3, max: 300, value: (@movie.length ? @movie.length : 120) %>
+    </li>
+    <li>
+      <%= f.label :released_year %>
+      <!-- Create a select/dropdown for the movie released year -->
+      <%= f.select :released_year, (1910..Date.today.year).to_a.map { |y| [y, y] }  %>
+    </li>
+  </ul>
+  <p>
+     <!-- Create a Submit Button -->
+    <%= f.submit %><br/>
+  </p>
+</fieldset>
+<% end %>

@@ -1,12 +1,33 @@
 Rails.application.routes.draw do
 
-  # Handle a HTTP GET /movies
-  # Invoke the MoviesController#index action/method
-  get '/movies', to: 'movies#index'
+  # generate all the CRUD routes for a resource.
+  resources :movies
 
-  # Handle a HTTP GET /movies/1
-  get '/movies/:id', to: 'movies#show'
+  # # Handle a HTTP GET /movies
+  # # Invoke the MoviesController#index action/method
+  # get '/movies', to: 'movies#index'
 
+  # # Handle a HTTP GET /movies/new
+  # get '/movies/new', to: 'movies#new', as: 'new_movie'
+
+  # # Route a HTTP POST Request for movies
+  # # MoviesController create action
+  # post '/movies', to: 'movies#create'
+
+  # # Route to generate a HTML form to edit a movie.
+  # # MoviesController edit action
+  # get '/movies/:id/edit', to: 'movies#edit', as: 'edit_movie'
+
+  # # Route a HTTP PATCH Request for movies to the
+  # # MoviesController update action.
+  # patch '/movies/:id', to: 'movies#update'
+
+  # # Handle a HTTP GET /movies/1
+  # get '/movies/:id', to: 'movies#show', as: 'movie'
+
+  # # Route a HTTP DELETE /movies/1 to the
+  # # MoviesController#destroy action
+  # delete '/movies/:id', to: 'movies#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

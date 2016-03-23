@@ -15,4 +15,7 @@
 # Subclass of ActiveRecord. So, it has superpower
 # in relation to the DB.
 class Movie < ActiveRecord::Base
+  # Class Constant variable that is an Array of valid ratings
+  # Valid Movie Ratings
+  RATINGS = ['G', 'PG', 'PG-13', 'R', 'NC-17']
 end
