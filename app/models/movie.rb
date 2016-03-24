@@ -29,4 +29,15 @@ class Movie < ActiveRecord::Base
   # name must be unique
   validates :name, uniqueness: {scope: :released_year}
 
+  # the rating must be one of the strings in the
+  # above RATINGS array
+  validates :rating, inclusion: { in: RATINGS, message: "%{value} is not a MPAA rating" }
+
+  # validate that the movie is from 3 to 300 minutes long
+  validates :length, numericality: {greater_than: 2, less_than: 301}
+
+
+  # validate the year
+  validates :released_year, inclusion: { in: 1910..Date.today.year,
+    message: "%{value} is not a release year, it must be between 1901 and #{Date.today.year}" }
 end
