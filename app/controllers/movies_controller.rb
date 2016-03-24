@@ -1,5 +1,9 @@
 class MoviesController < ApplicationController
 
+  # Invoke the set_movie method before any of these
+  # actions/methods are invoked.
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+
   # GET /movies
   def index
     @movies = Movie.all
@@ -14,7 +18,7 @@ class MoviesController < ApplicationController
   def show
     # Use the params hash contructed from the URL to get
     # the movie id
-    @movie = Movie.find(params[:id])
+   #    @movie = Movie.find(params[:id])
 
     respond_to do |format|
       format.html  # go to the show view, show.html.erb
@@ -65,14 +69,14 @@ class MoviesController < ApplicationController
     # Find the column in the movies table that has
     # the id of 2
     # Create a Movie model using this row data.
-    @movie = Movie.find(params[:id])
+    # @movie = Movie.find(params[:id])
   end
 
   # PATH /movies/:id
   def update
 
     # Find the movie to update/edit
-    @movie = Movie.find(params[:id])
+    # @movie = Movie.find(params[:id])
 
     respond_to do |format|
 
@@ -95,7 +99,7 @@ class MoviesController < ApplicationController
   def destroy
     # Find the movie in the movies table using the id
     # passed in via the path.
-    @movie = Movie.find(params[:id])
+    # @movie = Movie.find(params[:id])
 
     # Delete the row from the movies table.
     # using ActiveRecord#destroy method
@@ -110,6 +114,12 @@ class MoviesController < ApplicationController
   end
 
   private
+
+  # Gets the movie by id from the DB and set the @movie
+  # instance variable.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
   # Enforces strong parameter. Limit what attributes/columns can be set in the
   # movies table.
