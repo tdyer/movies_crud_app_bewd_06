@@ -15,6 +15,17 @@
 # Subclass of ActiveRecord. So, it has superpower
 # in relation to the DB.
 class Movie < ActiveRecord::Base
+
+  # has_many is a ActiveRecord method that indicates
+  # that there is a ONE to MANY relationhip between
+  # this Movie model and the Review model.
+  # Object to Relational Mapper (ORM)
+  has_many :reviews, dependent: :destroy
+
+  # dependent: :destroy will destroy all children when
+  # parent is destroyed.
+  # When one destroys the movie all it's reviews are destroyed!
+
   # Class Constant variable that is an Array of valid ratings
   # Valid Movie Ratings
   RATINGS = ['G', 'PG', 'PG-13', 'R', 'NC-17']
