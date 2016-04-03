@@ -1,0 +1,15 @@
+<header>
+  <h1>Reviews for <%= link_to(@movie.name, movie_path(@movie.id)) %></h1>
+</header>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li><%= truncate(review.content, length: 10) %>
+    <!-- Generate a <a > to /movies/1/reviews/2  -->
+      <%= link_to("Show", movie_review_path(@movie.id, review.id)) %>
+    </li>
+  <% end %>
+
+  <hr/><br/>
+  <%= link_to "Create a new movie", new_movie_path(@movie.id)  %>
+</ul>

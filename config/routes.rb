@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   # generate all the CRUD routes for a resource.
-  resources :movies
+  resources :movies do
+    # Creates a Nested Resource for reviews.
+    resources :reviews
+  end
 
   # # Handle a HTTP GET /movies
   # # Invoke the MoviesController#index action/method
