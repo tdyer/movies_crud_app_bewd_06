@@ -1,0 +1,35 @@
+<%= form_for([@movie, @review]) do |f| %>
+
+<fieldset>
+
+<!-- Error handling -->
+ <% if @review.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@review.errors.count, "error") %> prohibited this movie from b\
+    eing saved:</h2>
+
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- Form fields -->
+  <ul>
+    <li>
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </li>
+    <li>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </li>
+  </ul>
+  <p>
+    <%= f.submit %><br/>
+  </p>
+</fieldset>
+
+<% end %>
