@@ -5,11 +5,13 @@
   <% @movies.each do |movie| %>
   <li>
     <%= movie.name %>
+    <% if current_user %>
     | <%= link_to("Show", movie_path(movie.id)) %>
     | <%= link_to("Edit", edit_movie_path(movie.id)) %>
     <!-- Generate a HTTP DELETE Request to /movies/:id -->
     <!-- It's going to bring up a confirm dialog as well -->
     | <%= link_to("Destroy", movie_path(movie.id), method: :delete, data: {confirm: "Are you sure?"}) %>
+    <% end %>
   </li>
   <% end %>
 
