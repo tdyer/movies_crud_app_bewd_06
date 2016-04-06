@@ -8,6 +8,22 @@
 </head>
 <body>
 
+  <!-- Links to register and login users -->
+  <% if user_signed_in? %>
+   <!-- Devise, current_user method will return the User object for the user that is logged in -->
+   <p> User <%= current_user.email %> is signed in </p>
+   <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+   <% else %>
+   <p>No User is signed in </p>
+   <%= link_to "Sign In", new_user_session_path %>
+   <%= link_to "Sign Up", new_user_registration_path %>
+  <% end %>
+
+
+  <!-- Display messages from app -->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
 <!-- Your view content is placed here -->
 <!-- yield to the content created in the view -->
 <%= yield %>

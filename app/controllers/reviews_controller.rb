@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
 
+  # No access to reviews unless one is logged in.
+  #   before_action :authenticate_user!
+
   # invoke the set_movie method before all actions!
   before_action :set_movie
 

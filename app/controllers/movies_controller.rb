@@ -1,5 +1,12 @@
 class MoviesController < ApplicationController
 
+  # Restrict access to all the actions except the index action.
+  # Unless a user is logged in they can't update, create or delete movies.
+ # , except: [:index]
+
+ # Allow access for the list of movies.
+  skip_before_filter :authenticate_user!, only: [:index]
+
   # Invoke the set_movie method before any of these
   # actions/methods are invoked.
   before_action :set_movie, only: [:show, :edit, :update, :destroy]

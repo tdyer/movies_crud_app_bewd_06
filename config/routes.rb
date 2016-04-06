@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # Create the routes for user registration, login, ...
+  devise_for :users
+
+  # / will be directed to the movies index action
+  root to: 'movies#index'
+
   # generate all the CRUD routes for a resource.
   resources :movies do
     # Creates a Nested Resource for reviews.
