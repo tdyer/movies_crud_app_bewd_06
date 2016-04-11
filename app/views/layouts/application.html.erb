@@ -20,9 +20,10 @@
   <% end %>
 
 
-  <!-- Display messages from app -->
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <!-- Show flash messages -->
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+  <% end -%>
 
 <!-- Your view content is placed here -->
 <!-- yield to the content created in the view -->

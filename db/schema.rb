@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405004442) do
+ActiveRecord::Schema.define(version: 20160407004237) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "name"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20160405004442) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "content"
-    t.string   "email"
     t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 20160405004442) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

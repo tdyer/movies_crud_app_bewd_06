@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
   # Prevent access to any action is any controller that is a subclass.
   # Blacklist - Deny access by default.
   before_action :authenticate_user!
+
+  # Redirects to the current user show view after
+  # login
+  def after_sign_in_path_for(resource)
+    # resource will be the current_user
+    user_path(resource)
+  end
 end

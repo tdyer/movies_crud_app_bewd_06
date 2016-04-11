@@ -22,5 +22,16 @@
 </p>
 
 <p>
+  <%= @movie.name %> has been reviewed by
+  <% unless @movie.users.empty? %>
+    <!-- Show all the reviewer's full names -->
+    <%= @movie.users.uniq.map(&:full_name).join(', ') %>
+  <% else %>
+    <!-- movie has not been reviewed yet -->
+    no users.
+  <% end %>
+</p>
+
+<p>
   Create a <%= link_to('Review', new_movie_review_path(@movie.id)) %>
 </p>

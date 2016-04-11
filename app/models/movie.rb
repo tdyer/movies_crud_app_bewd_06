@@ -26,6 +26,9 @@ class Movie < ActiveRecord::Base
   # parent is destroyed.
   # When one destroys the movie all it's reviews are destroyed!
 
+  # Show all the users that have reviewed this movie
+  has_many :users, through: :reviews
+
   # Class Constant variable that is an Array of valid ratings
   # Valid Movie Ratings
   RATINGS = ['G', 'PG', 'PG-13', 'R', 'NC-17']

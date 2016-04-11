@@ -27,6 +27,8 @@ class ReviewsController < ApplicationController
   def create
 
     @review = @movie.reviews.new(review_params)
+    # This new review is created by the currently logged in user.
+    @review.user = current_user
 
     if @review.save
       # Success, we've saved the review

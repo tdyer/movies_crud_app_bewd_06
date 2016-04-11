@@ -3,7 +3,10 @@ class Review < ActiveRecord::Base
   # belongs_to is a ActiveRecord method.
   belongs_to :movie
 
+  # The Review should have a foreign key to the user
+  # that created the review.
+  belongs_to :user
+
   validates :content, presence: true
-  # Validate using a Regular Expression, validation will ONLY occur when we create a review.
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+
 end

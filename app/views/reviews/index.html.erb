@@ -5,8 +5,9 @@
 <ul>
   <% @reviews.each do |review| %>
     <li><%= truncate(review.content, length: 10) %>
+    | <em>Reviewed by <%= link_to(review.user.full_name, users_path(review.user)) %></em>
     <!-- Generate a <a > to /movies/1/reviews/2  -->
-      <%= link_to("Show", movie_review_path(@movie.id, review.id)) %>
+    |  <%= link_to("Show", movie_review_path(@movie.id, review.id)) %>
     </li>
   <% end %>
 

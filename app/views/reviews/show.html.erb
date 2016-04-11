@@ -1,5 +1,5 @@
 <header>
-  <h2><%= @review.email %>'s review of <%= link_to(@review.movie.name, movie_path(@movie)) %></h2>
+  <h2><%= @review.user.email %>'s review of <%= link_to(@review.movie.name, movie_path(@movie)) %></h2>
 </header>
 <p>
   <%= @review.content %>
